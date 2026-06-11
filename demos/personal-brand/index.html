@@ -1,211 +1,34 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Northline Digital — Website Design Studio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northline Digital — Website Preview</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --ink:      #0a0a0f;
-      --ink-2:    #3a3a4a;
-      --ink-3:    #7a7a8c;
-      --rule:     #e4e4ec;
-      --surface:  #f8f8fc;
-      --white:    #ffffff;
-      --blue:     #1d4ed8;
-      --blue-lt:  #3b82f6;
-      --violet:   #6d28d9;
-      --grad:     linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
-      --grad-soft: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
-      --radius-sm: 12px;
-      --radius-md: 20px;
-      --radius-lg: 32px;
-      --shadow-card: 0 2px 12px rgba(10,10,15,0.07), 0 1px 3px rgba(10,10,15,0.05);
-      --shadow-float: 0 24px 60px rgba(10,10,15,0.14), 0 4px 16px rgba(10,10,15,0.08);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--surface);
-      color: var(--ink);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .topbar { background: var(--ink); padding: 10px 0; text-align: center; }
-    .topbar span { color: rgba(255,255,255,0.55); font-size: 12px; font-family: 'Inter', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
-    .topbar a { color: #93c5fd; text-decoration: none; font-weight: 600; margin-left: 6px; }
-
-    .nav-wrap { position: sticky; top: 0; z-index: 100; background: rgba(248,248,252,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--rule); }
-    nav { max-width: 1140px; margin: auto; padding: 0 28px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; }
-    .brand span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); margin-left: 4px; vertical-align: middle; position: relative; top: -1px; }
-    .nav-links { display: flex; align-items: center; gap: 32px; }
-    .nav-links a { color: var(--ink-2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.18s; }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-cta { display: inline-flex; align-items: center; padding: 9px 20px; background: var(--ink); color: white !important; border-radius: 999px; font-size: 13px !important; font-weight: 600 !important; text-decoration: none; transition: opacity 0.18s; }
-    .nav-cta:hover { opacity: 0.82; }
-
-    .page { max-width: 1140px; margin: auto; padding: 0 28px; }
-
-    .hero { padding: 80px 0 72px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; }
-    .eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--blue); border-radius: 2px; }
-    .hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(38px, 4.5vw, 62px); line-height: 1.02; letter-spacing: -0.04em; color: var(--ink); margin-bottom: 20px; }
-    .hero h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-sub { color: var(--ink-2); font-size: 17px; line-height: 1.65; max-width: 420px; margin-bottom: 32px; }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; background: var(--grad); color: white; border-radius: 999px; font-size: 14px; font-weight: 600; text-decoration: none; box-shadow: 0 8px 28px rgba(29,78,216,0.3); transition: transform 0.18s, box-shadow 0.18s; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(29,78,216,0.38); }
-    .btn-ghost { display: inline-flex; align-items: center; gap: 6px; padding: 14px 24px; background: white; color: var(--ink); border: 1.5px solid var(--rule); border-radius: 999px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color 0.18s; }
-    .btn-ghost:hover { border-color: var(--ink-3); }
-    .hero-stats { display: flex; gap: 28px; margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--rule); }
-    .stat-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -0.04em; color: var(--ink); }
-    .stat-label { font-size: 12px; color: var(--ink-3); margin-top: 1px; }
-
-    .mockup-wrap { position: relative; }
-    .mockup-badge { position: absolute; top: -14px; right: 24px; background: white; border: 1px solid var(--rule); border-radius: 999px; padding: 6px 14px; font-size: 11px; font-weight: 600; color: var(--ink-2); letter-spacing: 0.06em; z-index: 2; box-shadow: var(--shadow-card); }
-    .mockup-badge::before { content: '●'; color: #22c55e; margin-right: 6px; font-size: 9px; }
-    .browser-shell { background: #1a1a2e; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-float); border: 1px solid rgba(255,255,255,0.06); }
-    .browser-chrome { background: #1e1e32; height: 42px; display: flex; align-items: center; padding: 0 16px; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .chrome-dots { display: flex; gap: 6px; }
-    .chrome-dots span { width: 10px; height: 10px; border-radius: 50%; }
-    .chrome-dots span:nth-child(1) { background: #ff5f57; }
-    .chrome-dots span:nth-child(2) { background: #ffbd2e; }
-    .chrome-dots span:nth-child(3) { background: #28c840; }
-    .url-bar { flex: 1; background: rgba(255,255,255,0.07); border-radius: 6px; height: 26px; display: flex; align-items: center; padding: 0 12px; font-size: 11px; color: rgba(255,255,255,0.4); font-family: monospace; }
-    .url-bar::before { content: '🔒'; font-size: 10px; margin-right: 6px; }
-
-    .inner-site { background: white; overflow: hidden; }
-    .inner-nav { height: 44px; background: white; border-bottom: 1px solid #f0f0f5; display: flex; align-items: center; padding: 0 20px; justify-content: space-between; }
-    .inner-brand { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: var(--ink); }
-    .inner-nav-links { display: flex; gap: 16px; }
-    .inner-nav-links span { font-size: 10px; color: var(--ink-3); font-weight: 500; }
-    .inner-hero { background: var(--grad-soft); padding: 28px 20px; display: grid; grid-template-columns: 1fr 0.85fr; gap: 20px; align-items: center; }
-    .inner-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
-    .inner-h1 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 8px; }
-    .inner-sub { font-size: 10px; color: var(--ink-2); line-height: 1.5; margin-bottom: 14px; }
-    .inner-btn { display: inline-flex; align-items: center; padding: 7px 14px; background: var(--grad); color: white; border-radius: 999px; font-size: 10px; font-weight: 700; }
-    .inner-img-box { background: var(--grad); border-radius: 14px; aspect-ratio: 4/3; position: relative; overflow: hidden; }
-    .inner-img-box::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.04)); }
-    .inner-services { padding: 16px 20px; border-bottom: 1px solid #f0f0f5; }
-    .inner-services-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--ink); }
-    .inner-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .inner-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 11px 12px; }
-    .inner-card-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--grad); margin-bottom: 7px; }
-    .inner-card-title { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .inner-card-text { font-size: 9px; color: var(--ink-3); line-height: 1.4; }
-    .inner-pricing { padding: 16px 20px; }
-    .inner-pricing-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--ink); }
-    .inner-price-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .inner-price-card { border: 1px solid var(--rule); border-radius: 10px; padding: 11px 12px; background: white; }
-    .inner-price-card.feat { border-color: var(--violet); background: linear-gradient(160deg, #f5f3ff, white); }
-    .inner-price-amt { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.04em; color: var(--ink); margin-bottom: 4px; }
-    .inner-price-card.feat .inner-price-amt { color: var(--violet); }
-    .inner-price-label { font-size: 9px; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
-    .inner-price-item { font-size: 8.5px; color: var(--ink-3); line-height: 1.5; }
-    .inner-price-item::before { content: '✓ '; color: #22c55e; font-weight: 700; }
-
-    .section { padding: 80px 0; }
-    .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
-    .section-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--blue); border-radius: 2px; }
-    .section h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(30px, 3.5vw, 46px); letter-spacing: -0.04em; line-height: 1.06; margin-bottom: 14px; }
-    .section-sub { color: var(--ink-2); font-size: 16px; max-width: 480px; line-height: 1.65; margin-bottom: 48px; }
-
-    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--rule); border-radius: var(--radius-md); overflow: hidden; }
-    .process-step { background: white; padding: 32px 28px; position: relative; }
-    .step-num { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--ink-3); margin-bottom: 16px; letter-spacing: 0.06em; }
-    .step-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); background: var(--grad-soft); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
-    .process-step h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; margin-bottom: 8px; }
-    .process-step p { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
-    .step-arrow { position: absolute; right: -13px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; background: white; border: 2px solid var(--rule); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--ink-3); z-index: 2; }
-
-    .pricing-section { padding: 80px 0; }
-    .pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; gap: 24px; }
-    .pricing-header h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(30px, 3.5vw, 46px); letter-spacing: -0.04em; line-height: 1.06; }
-    .pricing-note { font-size: 14px; color: var(--ink-3); max-width: 240px; text-align: right; flex-shrink: 0; }
-    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
-    .price-card { background: white; border: 1.5px solid var(--rule); border-radius: 24px; padding: 28px; box-shadow: var(--shadow-card); transition: transform 0.22s, box-shadow 0.22s; }
-    .price-card.featured { border-color: var(--violet); background: linear-gradient(160deg, #f5f3ff 0%, white 60%); position: relative; }
-    .featured-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--grad); color: white; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 14px; border-radius: 999px; white-space: nowrap; }
-    .card-tier { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px; }
-    .featured .card-tier { color: var(--violet); }
-    .price-amount { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 52px; letter-spacing: -0.06em; line-height: 1; color: var(--ink); margin-bottom: 6px; }
-    .price-amount sup { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; vertical-align: super; }
-    .price-desc { font-size: 13px; color: var(--ink-3); margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
-    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-    .feature-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--ink-2); }
-    .feature-list li::before { content: '✓'; color: #16a34a; font-weight: 700; }
-    .card-cta { display: block; width: 100%; padding: 13px; text-align: center; border-radius: 999px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.18s; }
-    .card-cta.outline { border: 1.5px solid var(--rule); color: var(--ink); }
-    .card-cta.solid { background: var(--grad); color: white; box-shadow: 0 8px 24px rgba(109,40,217,0.28); }
-
-    .what-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .what-item { background: white; border: 1.5px solid var(--rule); border-radius: var(--radius-md); padding: 26px; display: flex; gap: 18px; align-items: flex-start; box-shadow: var(--shadow-card); }
-    .what-icon { width: 46px; height: 46px; border-radius: var(--radius-sm); background: var(--grad-soft); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
-    .what-item h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; margin-bottom: 5px; }
-    .what-item p { font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
-
-    .faq-list { display: flex; flex-direction: column; gap: 2px; border-radius: var(--radius-md); overflow: hidden; background: var(--rule); }
-    .faq-item { background: white; padding: 22px 28px; }
-    .faq-q { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; margin-bottom: 8px; }
-    .faq-a { font-size: 14px; color: var(--ink-2); line-height: 1.65; }
-
-    .cta-section { padding: 0 0 80px; }
-    .cta-box { background: var(--ink); border-radius: var(--radius-lg); padding: 64px 48px; text-align: center; position: relative; overflow: hidden; }
-    .cta-box h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(30px, 4vw, 50px); letter-spacing: -0.04em; color: white; line-height: 1.06; margin-bottom: 16px; }
-    .cta-box p { color: rgba(255,255,255,0.55); font-size: 16px; max-width: 440px; margin: 0 auto 36px; line-height: 1.65; }
-    .cta-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .btn-white { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: white; color: var(--ink); border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; }
-    .btn-outline-white { display: inline-flex; align-items: center; padding: 14px 24px; border: 1.5px solid rgba(255,255,255,0.22); color: white; border-radius: 999px; font-size: 14px; font-weight: 500; text-decoration: none; }
-    footer { border-top: 1px solid var(--rule); padding: 28px 0; }
-    .footer-inner { max-width: 1140px; margin: auto; padding: 0 28px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-left { font-size: 13px; color: var(--ink-3); }
-    .footer-left strong { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--ink); }
-    .footer-right { font-size: 13px; color: var(--ink-3); }
-    .footer-right a { color: var(--blue); text-decoration: none; }
-
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; gap: 40px; }
-      .process-grid, .price-grid, .what-grid { grid-template-columns: 1fr; }
-      .step-arrow { display: none; }
-      .pricing-header { flex-direction: column; align-items: flex-start; }
-      .pricing-note { text-align: left; }
-      .inner-hero { grid-template-columns: 1fr; }
-      .inner-img-box { display: none; }
-      .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
-      nav .nav-links { display: none; }
-      .cta-box { padding: 44px 24px; }
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#090816;--card:#121026;--card2:#191633;--text:#f8f5ff;--muted:#bdb6d8;--line:rgba(255,255,255,.12);--purple:#8b5cf6;--pink:#d946ef;--cyan:#22d3ee;--grad:linear-gradient(135deg,#8b5cf6,#d946ef)}
+    html{scroll-behavior:smooth}body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:radial-gradient(circle at top left,rgba(139,92,246,.28),transparent 32%),radial-gradient(circle at top right,rgba(217,70,239,.16),transparent 30%),var(--bg);color:var(--text);line-height:1.6}a{color:inherit}.topbar{background:rgba(0,0,0,.35);border-bottom:1px solid var(--line);text-align:center;padding:10px 18px;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}.topbar a{color:#fff;text-decoration:none;font-weight:800;margin-left:6px}.nav-wrap{position:sticky;top:0;z-index:20;background:rgba(9,8,22,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}nav{max-width:1160px;margin:auto;height:68px;padding:0 22px;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:950;text-decoration:none;font-size:19px;letter-spacing:-.03em}.brand span{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--grad);margin-left:6px}.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{font-size:14px;color:var(--muted);text-decoration:none;font-weight:750}.nav-cta{padding:9px 15px;border:1px solid var(--line);border-radius:999px;color:#fff!important;background:rgba(255,255,255,.06)}.page{max-width:1160px;margin:auto;padding:0 22px}.hero{padding:76px 0 64px;display:grid;grid-template-columns:1fr 1.06fr;gap:46px;align-items:center}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--cyan);font-weight:900;margin-bottom:16px}.hero h1{font-size:clamp(42px,5.8vw,68px);line-height:.98;letter-spacing:-.06em;margin-bottom:20px}.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-sub{font-size:18px;color:var(--muted);max-width:510px;margin-bottom:28px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:999px;text-decoration:none;font-weight:900;border:1px solid var(--line)}.btn.primary{background:var(--grad);border:0;color:#fff;box-shadow:0 18px 42px rgba(139,92,246,.35)}.btn.secondary{background:rgba(255,255,255,.06);color:#fff}.stats{display:flex;gap:24px;border-top:1px solid var(--line);margin-top:34px;padding-top:24px}.stat-num{font-size:28px;font-weight:950;letter-spacing:-.05em}.stat-label{font-size:12px;color:var(--muted)}.mockup-wrap{position:relative}.badge{position:absolute;right:18px;top:-14px;background:#fff;color:#111827;border-radius:999px;padding:6px 13px;font-size:11px;font-weight:900;z-index:3;box-shadow:0 16px 42px rgba(0,0,0,.25)}.badge:before{content:"●";color:#22c55e;margin-right:6px}.browser{background:#17142c;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 35px 90px rgba(0,0,0,.38)}.chrome{height:44px;background:#11101f;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--line)}.dots{display:flex;gap:7px}.dots span{width:10px;height:10px;border-radius:50%;background:#ff5f57}.dots span:nth-child(2){background:#ffbd2e}.dots span:nth-child(3){background:#28c840}.url{flex:1;height:26px;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;padding:0 12px;font-size:11px;color:rgba(255,255,255,.45);font-family:monospace}.inner{background:#f8fafc;color:#111827}.inner-nav{height:46px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center;padding:0 18px}.inner-brand{font-size:13px;font-weight:950}.inner-links{display:flex;gap:14px;color:#6b7280;font-size:10px;font-weight:700}.inner-hero{padding:28px 18px;background:linear-gradient(135deg,#f5f3ff,#fff);display:grid;grid-template-columns:1fr .9fr;gap:18px;align-items:center}.inner-eyebrow{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#7c3aed;font-weight:900;margin-bottom:8px}.inner-h1{font-size:24px;line-height:1.05;font-weight:950;letter-spacing:-.04em;margin-bottom:8px}.inner-sub{font-size:10px;color:#4b5563;margin-bottom:12px}.inner-btn{display:inline-block;background:linear-gradient(135deg,#8b5cf6,#d946ef);color:#fff;border-radius:999px;padding:7px 12px;font-size:10px;font-weight:900}.inner-img{min-height:155px;border-radius:16px;background:linear-gradient(135deg,#8b5cf6,#d946ef);position:relative;overflow:hidden}.inner-img:after{content:"";position:absolute;left:18px;right:18px;bottom:18px;height:50px;border-radius:14px;background:rgba(255,255,255,.85)}.inner-section{padding:16px 18px;border-bottom:1px solid #e5e7eb}.inner-title{font-weight:950;margin-bottom:9px;font-size:13px}.inner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.inner-card,.inner-price{border:1px solid #e5e7eb;background:#fff;border-radius:12px;padding:10px}.icon{width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,#8b5cf6,#d946ef);margin-bottom:7px}.inner-card h4{font-size:10px;margin-bottom:4px}.inner-card p,.inner-price p{font-size:8.5px;color:#6b7280}.inner-price h4{font-size:17px;margin-bottom:3px}.inner-price.featured{border-color:#8b5cf6;background:#f5f3ff}.section{padding:74px 0}.section-label{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--cyan);font-weight:900;margin-bottom:14px}.section h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.05em;margin-bottom:12px}.section-sub{color:var(--muted);font-size:16px;max-width:560px;margin-bottom:34px}.process,.prices,.included,.faq-list{display:grid;gap:16px}.process,.prices{grid-template-columns:repeat(3,1fr)}.included{grid-template-columns:repeat(2,1fr)}.box,.price-card,.faq-item{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:0 22px 70px rgba(0,0,0,.18)}.box span{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:14px;background:rgba(139,92,246,.18);margin-bottom:14px}.box h3,.price-card h3,.faq-item h3{font-size:19px;margin-bottom:8px}.box p,.price-card p,.faq-item p,.included p{color:var(--muted);font-size:14px}.price-card.featured{border-color:rgba(217,70,239,.45);transform:translateY(-8px)}.tag{display:inline-block;background:rgba(217,70,239,.18);color:#f5d0fe;border-radius:999px;padding:5px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:900;margin-bottom:12px}.amount{font-size:50px;font-weight:950;letter-spacing:-.06em;margin:8px 0;color:#fff}.price-card ul{list-style:none;margin:18px 0;display:grid;gap:9px}.price-card li{color:var(--muted);font-size:14px}.price-card li:before{content:"✓";color:#22c55e;font-weight:900;margin-right:8px}.card-cta{width:100%;display:block;text-align:center}.included .box{display:flex;gap:16px}.included .emoji{font-size:24px;flex:0 0 auto}.cta{margin:0 0 72px;background:#0f0d1f;border:1px solid var(--line);border-radius:34px;padding:44px;text-align:center;position:relative;overflow:hidden}.cta:before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle,rgba(139,92,246,.25),transparent 40%);pointer-events:none}.cta>*{position:relative}.cta h2{font-size:clamp(32px,4vw,50px);line-height:1.04;letter-spacing:-.05em;margin-bottom:12px}.cta p{color:var(--muted);margin-bottom:24px}footer{border-top:1px solid var(--line);padding:28px 22px;color:var(--muted);text-align:center}footer a{color:#fff;text-decoration:none;font-weight:800}@media(max-width:880px){.nav-links{display:none}.hero,.inner-hero,.process,.prices,.included{grid-template-columns:1fr}.hero{padding-top:48px}.stats{gap:18px}.price-card.featured{transform:none}.inner-img{display:none}.inner-grid{grid-template-columns:1fr}.browser{border-radius:18px}.cta{padding:34px 22px}}
   </style>
 </head>
 <body>
-  <div class="topbar"><span>This is a live demo of what your website could look like.</span><a href="mailto:northlinedigital.studio@gmail.com?subject=Website%20Project">Get yours →</a></div>
-  <div class="nav-wrap"><nav><a href="#" class="brand">Northline Digital<span></span></a><div class="nav-links"><a href="#how">How it works</a><a href="#packages">Packages</a><a href="#faq">FAQ</a><a href="mailto:northlinedigital.studio@gmail.com?subject=Website%20Project" class="nav-cta">Email us</a></div></nav></div>
+  <div class="topbar">This is a live demo of what your website could look like. <a href="mailto:northlinedigital.studio@gmail.com?subject=Website%20Project">Get yours →</a></div>
+  <div class="nav-wrap"><nav><a class="brand" href="#">Northline Digital<span></span></a><div class="nav-links"><a href="#how">How it works</a><a href="#packages">Packages</a><a href="#faq">FAQ</a><a class="nav-cta" href="mailto:northlinedigital.studio@gmail.com?subject=Website%20Project">Email us</a></div></nav></div>
   <main>
     <div class="page">
       <section class="hero">
-        <div><div class="eyebrow">Website Design Studio</div><h1>We build websites that <em>work for your business.</em></h1><p class="hero-sub">Clean, fast, professional websites for small businesses and freelancers — delivered in days, not months.</p><div class="hero-actions"><a class="btn-primary" href="mailto:northlinedigital.studio@gmail.com?subject=Website%20Project">Email Northline Digital →</a><a class="btn-ghost" href="#packages">View packages</a></div><div class="hero-stats"><div><div class="stat-num">3</div><div class="stat-label">Package tiers</div></div><div><div class="stat-num">$150</div><div class="stat-label">Starting price</div></div><div><div class="stat-num">7 days</div><div class="stat-label">Typical turnaround</div></div></div></div>
-        <div class="mockup-wrap"><div class="mockup-badge">Live preview</div><div class="browser-shell"><div class="browser-chrome"><div class="chrome-dots"><span></span><span></span><span></span></div><div class="url-bar">yourbusiness.com</div></div><div class="inner-site"><div class="inner-nav"><div class="inner-brand">Your Business</div><div class="inner-nav-links"><span>Services</span><span>About</span><span>Contact</span></div></div><div class="inner-hero"><div><div class="inner-eyebrow">Professional · Fast · Reliable</div><div class="inner-h1">A website that explains what you do.</div><div class="inner-sub">Clear layout. Mobile-friendly. Ready to bring in customers from day one.</div><div class="inner-btn">Get in touch →</div></div><div class="inner-img-box"></div></div><div class="inner-services"><div class="inner-services-title">What we offer</div><div class="inner-cards"><div class="inner-card"><div class="inner-card-icon"></div><div class="inner-card-title">Service One</div><div class="inner-card-text">Short description of your service.</div></div><div class="inner-card"><div class="inner-card-icon"></div><div class="inner-card-title">Service Two</div><div class="inner-card-text">Short description of your service.</div></div><div class="inner-card"><div class="inner-card-icon"></div><div class="inner-card-title">Service Three</div><div class="inner-card-text">Short description of your service.</div></div></div></div><div class="inner-pricing"><div class="inner-pricing-title">Packages</div><div class="inner-price-cards"><div class="inner-price-card"><div class="inner-price-amt">$150</div><div class="inner-price-label">Basic</div><div class="inner-price-item">One-page site</div><div class="inner-price-item">Hero + services</div><div class="inner-price-item">Mobile-friendly</div></div><div class="inner-price-card feat"><div class="inner-price-amt">$250</div><div class="inner-price-label">Standard ✦</div><div class="inner-price-item">Everything in Basic</div><div class="inner-price-item">FAQ + Process</div><div class="inner-price-item">Basic SEO</div></div><div class="inner-price-card"><div class="inner-price-amt">$350</div><div class="inner-price-label">Premium</div><div class="inner-price-item">Everything in Std</div><div class="inner-price-item">Gallery + form</div><div class="inner-price-item">3 revisions</div></div></div></div></div></div></div>
+        <div><div class="eyebrow">Website Design Studio</div><h1>We build websites that <em>work for your business.</em></h1><p class="hero-sub">Clean, fast, professional websites for small businesses and freelancers — delivered in days, not months.</p><div class="actions"><a class="btn primary" href="mailto:northlinedigital.studio@gmail.com?subject=Website%20Project">Email Northline Digital →</a><a class="btn secondary" href="#packages">View packages</a></div><div class="stats"><div><div class="stat-num">3</div><div class="stat-label">Package tiers</div></div><div><div class="stat-num">$150</div><div class="stat-label">Starting price</div></div><div><div class="stat-num">7 days</div><div class="stat-label">Typical turnaround</div></div></div></div>
+        <div class="mockup-wrap"><div class="badge">Live preview</div><div class="browser"><div class="chrome"><div class="dots"><span></span><span></span><span></span></div><div class="url">yourbusiness.com</div></div><div class="inner"><div class="inner-nav"><div class="inner-brand">Your Business</div><div class="inner-links"><span>Services</span><span>About</span><span>Contact</span></div></div><div class="inner-hero"><div><div class="inner-eyebrow">Professional · Fast · Reliable</div><div class="inner-h1">A website that explains what you do.</div><div class="inner-sub">Clear layout. Mobile-friendly. Ready to bring in customers from day one.</div><div class="inner-btn">Get in touch →</div></div><div class="inner-img"></div></div><div class="inner-section"><div class="inner-title">What we offer</div><div class="inner-grid"><div class="inner-card"><div class="icon"></div><h4>Service One</h4><p>Short description of your service.</p></div><div class="inner-card"><div class="icon"></div><h4>Service Two</h4><p>Short description of your service.</p></div><div class="inner-card"><div class="icon"></div><h4>Service Three</h4><p>Short description of your service.</p></div></div></div><div class="inner-section"><div class="inner-title">Packages</div><div class="inner-grid"><div class="inner-price"><h4>$150</h4><p>Basic website</p></div><div class="inner-price featured"><h4>$250</h4><p>Standard site</p></div><div class="inner-price"><h4>$350</h4><p>Premium site</p></div></div></div></div></div></div>
       </section>
     </div>
-    <div style="height:1px;background:var(--rule);"></div>
+    <div style="height:1px;background:var(--line)"></div>
     <div class="page">
-      <section class="section" id="how"><div class="section-label">How it works</div><h2>From email to live site in three steps.</h2><p class="section-sub">No long forms. No confusing process. Just email us, we talk, we build.</p><div class="process-grid"><div class="process-step"><div class="step-num">01</div><div class="step-icon">✉️</div><h3>You email us</h3><p>Send a quick email with your business name and what you do. We reply within 24 hours with a simple plan.</p><div class="step-arrow">→</div></div><div class="process-step"><div class="step-num">02</div><div class="step-icon">🎨</div><h3>We design it</h3><p>You pick a package and share any info or images. We handle the layout, copy suggestions, and mobile design.</p><div class="step-arrow">→</div></div><div class="process-step"><div class="step-num">03</div><div class="step-icon">🚀</div><h3>You review & launch</h3><p>We send you a preview link. You request changes if needed, approve it, and your site goes live.</p></div></div></section>
-      <section class="pricing-section" id="packages"><div class="pricing-header"><div><div class="section-label">Packages</div><h2>Simple, honest pricing.</h2></div><p class="pricing-note">No hidden fees. No monthly charges. Pay once, own your site.</p></div><div class="price-grid"><div class="price-card"><div class="card-tier">Basic</div><div class="price-amount"><sup>$</sup>150</div><p class="price-desc">A clean one-page website to get you online fast.</p><ul class="feature-list"><li>Hero section with your headline</li><li>About section</li><li>Services section</li><li>Email contact button</li><li>Mobile-friendly layout</li><li>1 round of revisions</li></ul><a class="card-cta outline" href="mailto:northlinedigital.studio@gmail.com?subject=Basic%20Package%20-%20%24150">Start with Basic →</a></div><div class="price-card featured"><div class="featured-badge">Most popular</div><div class="card-tier">Standard</div><div class="price-amount"><sup>$</sup>250</div><p class="price-desc">A stronger site that earns trust and answers questions.</p><ul class="feature-list"><li>Everything in Basic</li><li>Process / How it works section</li><li>FAQ section</li><li>Stronger visual layout</li><li>Basic SEO setup</li><li>2 rounds of revisions</li></ul><a class="card-cta solid" href="mailto:northlinedigital.studio@gmail.com?subject=Standard%20Package%20-%20%24250">Get Standard →</a></div><div class="price-card"><div class="card-tier">Premium</div><div class="price-amount"><sup>$</sup>350</div><p class="price-desc">A polished web presence for a business ready to grow.</p><ul class="feature-list"><li>Everything in Standard</li><li>Portfolio / gallery section</li><li>Contact form area</li><li>Additional custom sections</li><li>More refined visual detail</li><li>3 rounds of revisions</li></ul><a class="card-cta outline" href="mailto:northlinedigital.studio@gmail.com?subject=Premium%20Package%20-%20%24350">Get Premium →</a></div></div></section>
-      <section class="section"><div class="section-label">What's included</div><h2>Built right, from the start.</h2><p class="section-sub">Every site we build comes with these as standard — no upsells.</p><div class="what-grid"><div class="what-item"><div class="what-icon">📱</div><div><h3>Mobile-friendly by default</h3><p>Every page works perfectly on phones and tablets.</p></div></div><div class="what-item"><div class="what-icon">⚡</div><div><h3>Fast-loading pages</h3><p>Clean code and no bloat means your site loads quickly.</p></div></div><div class="what-item"><div class="what-icon">✉️</div><div><h3>Clear contact flow</h3><p>Every site has a clear path for visitors to reach you.</p></div></div><div class="what-item"><div class="what-icon">🔍</div><div><h3>SEO-ready structure</h3><p>Proper headings, meta tags, and page structure.</p></div></div></div></section>
-      <section class="section" id="faq"><div class="section-label">FAQ</div><h2>Common questions.</h2><p class="section-sub" style="margin-bottom:32px;">If you have others, just email us.</p><div class="faq-list"><div class="faq-item"><div class="faq-q">How long does it take?</div><p class="faq-a">Most websites are delivered within 5–7 business days of receiving your content.</p></div><div class="faq-item"><div class="faq-q">What do I need to provide?</div><p class="faq-a">Your business name, what you do, any images, and a preferred color or vibe.</p></div><div class="faq-item"><div class="faq-q">Will I own the site?</div><p class="faq-a">Yes. Once payment is complete, the files are yours.</p></div><div class="faq-item"><div class="faq-q">Can I upgrade later?</div><p class="faq-a">Absolutely. Many clients start with Basic and upgrade later.</p></div></div></section>
+      <section class="section" id="how"><div class="section-label">How it works</div><h2>From email to live site in three steps.</h2><p class="section-sub">No long forms. No confusing process. Just email us, we talk, we build.</p><div class="process"><div class="box"><span>✉️</span><h3>You email us</h3><p>Send your business name and what you do. We reply within 24 hours with a simple plan.</p></div><div class="box"><span>🎨</span><h3>We design it</h3><p>You pick a package and share info/images. We handle layout, copy suggestions and mobile design.</p></div><div class="box"><span>🚀</span><h3>You review & launch</h3><p>We send a preview link. You request changes, approve it, and your site goes live.</p></div></div></section>
+      <section class="section" id="packages"><div class="section-label">Packages</div><h2>Simple, honest pricing.</h2><p class="section-sub">No hidden fees. No monthly charges. Pay once, own your site.</p><div class="prices"><div class="price-card"><h3>Basic</h3><div class="amount">$150</div><p>A clean one-page website to get you online fast.</p><ul><li>Hero section</li><li>About section</li><li>Services section</li><li>Email contact button</li><li>Mobile-friendly layout</li><li>1 revision</li></ul><a class="btn secondary card-cta" href="mailto:northlinedigital.studio@gmail.com?subject=Basic%20Package%20-%20%24150">Start with Basic</a></div><div class="price-card featured"><div class="tag">Most popular</div><h3>Standard</h3><div class="amount">$250</div><p>A stronger site that earns trust and answers questions.</p><ul><li>Everything in Basic</li><li>Process section</li><li>FAQ section</li><li>Stronger visual layout</li><li>Basic SEO setup</li><li>2 revisions</li></ul><a class="btn primary card-cta" href="mailto:northlinedigital.studio@gmail.com?subject=Standard%20Package%20-%20%24250">Get Standard</a></div><div class="price-card"><h3>Premium</h3><div class="amount">$350</div><p>A polished web presence for a business ready to grow.</p><ul><li>Everything in Standard</li><li>Portfolio/gallery section</li><li>Contact form area</li><li>Additional sections</li><li>More refined design</li><li>3 revisions</li></ul><a class="btn secondary card-cta" href="mailto:northlinedigital.studio@gmail.com?subject=Premium%20Package%20-%20%24350">Get Premium</a></div></div></section>
+      <section class="section"><div class="section-label">What's included</div><h2>Built right, from the start.</h2><p class="section-sub">Every site we build comes with these as standard.</p><div class="included"><div class="box"><div class="emoji">📱</div><div><h3>Mobile-friendly</h3><p>Works properly on phones and tablets.</p></div></div><div class="box"><div class="emoji">⚡</div><div><h3>Fast-loading</h3><p>Clean code and no unnecessary bloat.</p></div></div><div class="box"><div class="emoji">✉️</div><div><h3>Clear contact flow</h3><p>Visitors know exactly how to reach you.</p></div></div><div class="box"><div class="emoji">🔍</div><div><h3>SEO-ready structure</h3><p>Headings, titles and basic page structure.</p></div></div></div></section>
+      <section class="section" id="faq"><div class="section-label">FAQ</div><h2>Common questions.</h2><div class="faq-list"><div class="faq-item"><h3>How long does it take?</h3><p>Most sites are delivered within 5–7 business days after receiving your content.</p></div><div class="faq-item"><h3>What do I need to provide?</h3><p>Your business name, what you do, images if you have them, and preferred color/vibe.</p></div><div class="faq-item"><h3>Will I own the site?</h3><p>Yes. Once payment is complete, the files are yours.</p></div></div></section>
+      <section class="cta"><h2>Let's build your website.</h2><p>Email us with your business name and what you do. We'll reply with a simple plan and package recommendation.</p><a class="btn primary" href="mailto:northlinedigital.studio@gmail.com?subject=Website%20Project">Email Northline Digital →</a></section>
     </div>
-    <div class="page cta-section"><div class="cta-box"><h2>Let's build your website.</h2><p>Email us with your business name and what you do. We'll reply with a simple plan and package recommendation.</p><div class="cta-actions"><a class="btn-white" href="mailto:northlinedigital.studio@gmail.com?subject=Website%20Project">Email Northline Digital →</a><a class="btn-outline-white" href="#packages">See packages</a></div></div></div>
   </main>
-  <footer><div class="footer-inner"><div class="footer-left"><strong>Northline Digital</strong> — Website Design Studio</div><div class="footer-right"><a href="mailto:northlinedigital.studio@gmail.com">northlinedigital.studio@gmail.com</a></div></div></footer>
+  <footer><strong>Northline Digital</strong> — Website Design Studio · <a href="mailto:northlinedigital.studio@gmail.com">northlinedigital.studio@gmail.com</a></footer>
 </body>
 </html>
